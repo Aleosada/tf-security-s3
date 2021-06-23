@@ -97,12 +97,12 @@ resource "random_integer" "rand" {
 #  target_key_id = aws_kms_key.s3-key.key_id
 #}
 
-resource "aws_kms_grant" "kms-s3-key-grant" {
-  name              = "kms-s3-key-grant"
-  key_id            = data.aws_kms_key.kms-s3-key.key_id
-  grantee_principal = aws_iam_role.kms-s3-key-role.arn
-  operations        = ["Encrypt", "Decrypt", "GenerateDataKey"]
-}
+#resource "aws_kms_grant" "kms-s3-key-grant" {
+#  name              = "kms-s3-key-grant"
+#  key_id            = data.aws_kms_key.kms-s3-key.key_id
+#  grantee_principal = aws_iam_role.kms-s3-key-role.arn
+#  operations        = ["Encrypt", "Decrypt", "GenerateDataKey"]
+#}
 
 resource "aws_s3_bucket" "private-bucket" {
   bucket        = "my-private-bucket-${random_integer.rand.result}"
